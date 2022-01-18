@@ -7,4 +7,6 @@ has been a bit boring for me to review the bill
 This inspired me to write two python scrip: 
 
 1. To review the Items Summary (non-repeated list of items) of each page, pdflist.py
-2. To search/dig further possible detail of suspected item(s) in the Summary 
+2. To search/dig further possible detail of suspected item(s) in the Summary, pdfsearch.py
+ 
+A quick way to search and review PDF files in IDE, adopt as per your need 
