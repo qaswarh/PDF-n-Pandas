@@ -1,7 +1,22 @@
 import PyPDF2
+import re
 import pandas as pd
 
 month = '07/'
+item = 'BEECHER'
+
+
+def rFind(gotcha):
+    rlist = []
+    for r in range(0, rows):
+        if isinstance(df.values[r, 0], str):
+            ds = df.values[r, 0]
+            m1 = re.search(gotcha, ds)
+            if m1:
+                found = m1.group(0)
+                rlist.append(r)
+    return rlist
+
 
 pdfFileObj = open('August 03_21.pdf', 'rb')
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
@@ -11,13 +26,8 @@ for page in range(0, pdfReader.numPages):
     pageObj = pageObj.split(month)
     df = pd.DataFrame((sub.split(month) for sub in pageObj))
     (rows, column) = df.shape
-    item_list = df.values[3:50].tolist()
-    if item_list:
-        item_list1 = []
-        for item in zip(*item_list):
-            item_list1.append(item)
-        item_list2 = []
-        for item in item_list1[0]:
-            if item[2:41] not in item_list2:
-                item_list2.append(item[2:41])
-        print(item_list2)
+
+    ds1 = rFind(item)
+    for i in ds1:
+        if item in str(df.values[i])[1:50]:
+            print(str(df.values[i])[1:4] + ' ' + str(df.values[i])[4:43] + ' ' + str(df.values[i])[43:50])
