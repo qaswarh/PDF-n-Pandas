@@ -3,7 +3,7 @@ import re
 import pandas as pd
 
 month = '07/'
-item = 'BEECHER'
+item = 'MART'
 
 
 def rFind(gotcha):
